@@ -37,7 +37,8 @@ class Auth extends CI_Controller
         if ($user) {
             if (password_verify($password, $user['password'])) {
                 $data = [
-                    'username' => $user['username']
+                    'username' => $user['username'],
+					'tipe'	=> $user['tipe']
                 ];
                 $this->session->set_userdata($data);
                 $this->session->set_flashdata('pesan', 'Login');

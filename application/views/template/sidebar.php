@@ -53,13 +53,30 @@
                     <span>Penjualan</span>
                 </a>
             </li>
-            <li class="menu-header">Profil Usaha</li>
-            <li <?= $this->uri->segment(1) == 'profil' ? 'class="active"' : "" ?>>
-                <a class="nav-link" href="<?= base_url() ?>profil">
-                    <i class="fas fa-store"></i>
-                    <span>Profil Usaha</span>
-                </a>
-            </li>
+			
+			<?php
+				if($_SESSION['tipe'] <> 'admin'){
+			?>
+				<li class="menu-header">Profil Usaha</li>
+				<li <?= $this->uri->segment(1) == 'profil' ? 'class="active"' : "" ?>>
+					<a class="nav-link" href="<?= base_url() ?>profil">
+						<i class="fas fa-store"></i>
+						<span>Profil Usaha</span>
+					</a>
+				</li>
+			<?php
+				}else{
+			?>
+				<li class="menu-header">Data User</li>
+				<li <?= $this->uri->segment(1) == 'user' ? 'class="active"' : "" ?>>
+					<a class="nav-link" href="<?= base_url() ?>user">
+						<i class="fas fa-store"></i>
+						<span>User</span>
+					</a>
+				</li>
+			<?php
+				}
+			?>
         </ul>
     </aside>
 </div>
