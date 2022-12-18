@@ -40,6 +40,10 @@
                                     <input type="text" class="form-control form-control-user" id="username" placeholder="Username" name="username" autocomplete="off" value="<?= set_value('username');  ?>">
                                     <?= form_error('username', '<small class="form-text text-danger pl-3">', '</small>') ?>
                                 </div>
+								<div class="form-group">
+                                    <input type="text" class="form-control form-control-user" id="email" placeholder="email" name="email" autocomplete="off" value="<?= set_value('email');  ?>">
+                                    <?= form_error('email', '<small class="form-text text-danger pl-3">', '</small>') ?>
+                                </div>
                                 <div class="form-group">
                                     <input type="text" class="form-control form-control-user" id="namaUsaha" placeholder="Nama Usaha" name="namaUsaha" autocomplete="off" value="<?= set_value('namaUsaha');  ?>">
                                     <?= form_error('namaUsaha', '<small class="form-text text-danger pl-3">', '</small>') ?>

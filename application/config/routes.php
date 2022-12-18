@@ -52,3 +52,5 @@ defined('BASEPATH') or exit('No direct script access allowed');
 $route['default_controller'] = 'dashboard';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
+$route['auth/lupa-password'] = 'auth/lupaPassword';
+$route['auth/reset-password/(:any)'] = 'auth/resetPassword/$1';

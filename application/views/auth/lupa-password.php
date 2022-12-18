@@ -33,7 +33,7 @@
                     <div class="card-body p-0">
                         <div class="p-5">
                             <div class="text-center">
-                                <h1 class="h4 text-gray-900 mb-4">LOGIN BUKU USAHA</h1>
+                                <h1 class="h4 text-gray-900 mb-4">LUPA PASSWORD</h1>
 								
                             </div>
                             <div class="flash-data" data-flashdata="<?= $this->session->flashdata('pesan'); ?>"></div>
@@ -45,28 +45,23 @@
                                     </button>
                                 </div>
                             <?php endif; ?>
-                            <form class="user" method="POST" action="<?= base_url('auth') ?>">
+							
+                            <form class="user" method="POST" action="<?= base_url('auth/lupa-password') ?>">
                                 <div class="form-group">
-                                    <input type="text" class="form-control form-control-user" id="username" placeholder="Username" name="username" autocomplete="off" value="<?= set_value('username');  ?>">
-                                    <?= form_error('username', '<small class="form-text text-danger pl-3">', '</small>') ?>
+                                    <input type="text" class="form-control form-control-user" id="email" placeholder="email" name="email" autocomplete="off" value="<?= set_value('email');  ?>">
+                                    <?= form_error('email', '<small class="form-text text-danger pl-3">', '</small>') ?>
                                 </div>
-                                <div class="form-group">
-                                    <input type="password" class="form-control form-control-user" id="password" placeholder="Password" name="password" autocomplete="off">
-                                    <?= form_error('password', '<small class="form-text text-danger pl-3">', '</small>') ?>
-                                </div>
+                                
                                 <button class="btn btn-primary btn-user btn-block" type="submit">
-                                    Login
+                                    Kirimkan email
                                 </button>
                             </form>
                             <hr>
-                            <!-- <div class="text-center">
-                                <a class="small" href="forgot-password.html">Forgot Password?</a>
-                            </div> -->
+                            
                             <div class="text-center">
                                 <p class="small">Belum Punya Akun? Silahkan <a href="<?= base_url('auth/registrasi') ?>">Registrasi</a></p>
                             </div>
 
-							<p class="text-center">Lupa Password? <a href="<?= base_url('auth/lupa-password') ?>">klik di sini</a></p>
                         </div>
 
                     </div>
