@@ -20,7 +20,7 @@
                                 <select class="form-control text-capitalize" id="produk" name="produk">
                                     <option disabled selected>Pilih Produk</option>
                                     <?php foreach ($produk as $pr) : ?>
-                                        <option value="<?= $pr['id_produk']; ?>" class="text-capitalize"><?= $pr['nama_produk']; ?></option>
+                                        <option value="<?= $pr['id_produk']; ?>" class="text-capitalize"><?= (isset($pr['username'])) ? $pr['username'].' - ' . $pr['nama_produk'] : $pr['nama_produk'] ; ?></option>
                                     <?php endforeach; ?>
                                 </select>
                                 <?= form_error('produk', '<small class="form-text text-danger">', '</small>'); ?>

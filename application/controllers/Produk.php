@@ -16,7 +16,9 @@ class Produk extends CI_Controller
         $user_id = $data['user']['id_username'];
         $data['nama'] = $data['user']['namaUsaha'];
         $data['title'] = 'Data Produk';
+
         $data['produk'] = $this->Model_Produk->get_produk($user_id);
+
         $this->load->view('template/header', $data);
         $this->load->view('template/sidebar');
         $this->load->view('produk/index', $data);
@@ -26,10 +28,30 @@ class Produk extends CI_Controller
     public function tambah_produk()
     {
         $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
-        $user_id = $data['user']['id_username'];
+
+		if($_SESSION['tipe'] === 'admin'){	
+			$user_id = $this->input->post('user');
+		}else{
+			$user_id = $data['user']['id_username'];
+		}
+        
         $data['nama'] = $data['user']['namaUsaha'];
         $data['title'] = 'Tambah Data Produk';
         $data['kategori'] = $this->Model_Produk->data_kategori($user_id);
+
+		$data['users'] = $this->Model_Produk->get_users();
+
+		if($_SESSION['tipe'] === 'admin'){
+			$this->form_validation->set_rules(
+				'user',
+				'User',
+				'trim|required',
+				[
+					'required' => "User belum dipilih",
+				]
+	
+			);
+		}
 
         $this->form_validation->set_rules(
             'nama',
@@ -123,7 +145,23 @@ class Produk extends CI_Controller
         $data['nama'] = $data['user']['namaUsaha'];
         $data['title'] = 'Update Produk';
         $data['produk'] = $this->Model_Produk->ambil_produk($id_produk);
-        $data['kategori'] = $this->Model_Produk->ambil_kat_produk($id_produk, $user_id);
+
+        $data['kategori'] = $this->Model_Produk->data_kategori($user_id);
+
+		$data['users'] = $this->Model_Produk->get_users();
+
+		if($_SESSION['tipe'] === 'admin'){
+			$this->form_validation->set_rules(
+				'user',
+				'User',
+				'trim|required',
+				[
+					'required' => "User belum dipilih",
+				]
+	
+			);
+		}
+
         $this->form_validation->set_rules(
             'nama',
             'Nama Produk',
@@ -187,9 +225,30 @@ class Produk extends CI_Controller
     public function tambah_kategori()
     {
         $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
-        $user_id = $data['user']['id_username'];
+        
+		if($_SESSION['tipe'] === 'admin'){	
+			$user_id = $this->input->post('user');
+		}else{
+			$user_id = $data['user']['id_username'];
+		}
+
         $data['nama'] = $data['user']['namaUsaha'];
         $data['title'] = 'Tambah Kategori Produk';
+
+		$data['users'] = $this->Model_Produk->get_users();
+
+		if($_SESSION['tipe'] === 'admin'){
+			$this->form_validation->set_rules(
+				'user',
+				'User',
+				'trim|required',
+				[
+					'required' => "User belum dipilih",
+				]
+	
+			);
+		}
+
         $this->form_validation->set_rules(
             'nama_kat',
             'Nama Kategori',
@@ -229,6 +288,21 @@ class Produk extends CI_Controller
         $data['nama'] = $data['user']['namaUsaha'];
         $data['title'] = 'Update Kategori Produk';
         $data['kategori'] = $this->db->get_where('kategori', ['id_kategori' => $id_kategori])->row_array();
+
+		$data['users'] = $this->Model_Produk->get_users();
+
+		if($_SESSION['tipe'] === 'admin'){
+			$this->form_validation->set_rules(
+				'user',
+				'User',
+				'trim|required',
+				[
+					'required' => "User belum dipilih",
+				]
+	
+			);
+		}
+
         $this->form_validation->set_rules(
             'nama_kat',
             'Nama Kategori',

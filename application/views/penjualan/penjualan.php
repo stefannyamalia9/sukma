@@ -66,6 +66,9 @@
                 <table class="table table-bordered table-light shadow-sm p-3 mb-5 bg-white rounded" id="tabel-keuangan">
                     <thead>
                         <tr>
+							<?php if($_SESSION['tipe'] === 'admin'){?>
+								<th>User</th>
+							<?php }?>
                             <th scope="col" class="text-center">Nama Produk</th>
                             <th scope="col" width="5%" class="text-center">Unit</th>
                             <th scope="col" width="18%" class="text-center">Keuntungan (Rp)</th>
@@ -75,6 +78,9 @@
                     <tbody>
                         <?php foreach ($penjualan as $pj) : ?>
                             <tr>
+								<?php if($_SESSION['tipe'] === 'admin'){?>
+									<td><?= $pj['username']; ?></td>
+								<?php }?>
                                 <td class="text-capitalize"><?= $pj['produk_name']; ?>
                                     <span class="badge badge-light float-right"><?= $pj['input'] ?>x Penjualan</span>
                                 </td>

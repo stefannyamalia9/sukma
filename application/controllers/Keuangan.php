@@ -57,6 +57,7 @@ class Keuangan extends CI_Controller
         $data['nama'] = $data['user']['namaUsaha'];
         $data['title'] = 'Tambah Data Penjualan Produk';
         $data['produk'] = $this->Model_Keuangan->ambil_produk($user_id);
+		
         $this->form_validation->set_rules('produk', 'Produk', 'required', [
             'required' => 'Pilih Salah Satu Produk'
         ]);
@@ -107,6 +108,7 @@ class Keuangan extends CI_Controller
         $data['nama'] = $data['user']['namaUsaha'];
         $data['title'] = 'Pembelian Produk';
         $data['pembelian'] = $this->Model_Keuangan->get_pembelian($user_id, $bulan, $tahun);
+		
         $this->load->view('template/header', $data);
         $this->load->view('template/sidebar');
         $this->load->view('pembelian/pembelian', $data);

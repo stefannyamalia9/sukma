@@ -6,6 +6,20 @@
                 <div class="card">
                     <div class="card-body">
                         <form method="POST" action="<?= base_url(); ?>/produk/tambah_produk">
+
+							<?php if($_SESSION['tipe'] === 'admin'){?>
+							<div class="form-group">
+                                <label for="nama">Nama User</label>
+                                <select name="user" id="user" class="form-control">
+									<option value="">-- Pilih User --</option>
+									<?php foreach($users as $user){?>
+										<option value="<?= $user['id_username']; ?>"><?= $user['username']; ?></option>
+									<?php }?>
+								</select>
+								<?= form_error('user', '<small class="form-text text-danger">', '</small>'); ?>
+                            </div>
+							<?php } ?>
+
                             <div class="form-group">
                                 <label for="nama">Nama Produk</label>
                                 <input type="text" class="form-control text-capitalize" id="nama" name="nama" autocomplete="off" placeholder="Masukan Nama Produk..." value="<?= set_value('nama');  ?>">

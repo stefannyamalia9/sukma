@@ -11,6 +11,9 @@
                 <table class="table table-bordered table-light shadow-sm p-3 mb-5 bg-white rounded" id="tabel-kategori">
                     <thead>
                         <tr>
+							<?php if($_SESSION['tipe'] === 'admin'){?>
+								<th>User</th>
+							<?php }?>
                             <th scope="col" class="text-center">Nama Kategori</th>
                             <th scope="col" class="text-center">Action</th>
                         </tr>
@@ -18,6 +21,9 @@
                     <tbody>
                         <?php foreach ($kategori as $kt) : ?>
                             <tr>
+								<?php if($_SESSION['tipe'] === 'admin'){?>
+									<td><?= $kt['username']; ?></td>
+								<?php }?>
                                 <td class="text-capitalize"><?= $kt['nama_kategori']; ?></td>
                                 <td class="text-center">
                                     <!-- Button Update -->

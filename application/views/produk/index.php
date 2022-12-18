@@ -10,6 +10,9 @@
                 <table class="table table-bordered table-light shadow-sm p-3 mb-5 bg-white rounded" id="tabel-produk">
                     <thead>
                         <tr>
+							<?php if($_SESSION['tipe'] === 'admin'){?>
+								<th>User</th>
+							<?php }?>
                             <th class="text-center">Nama</th>
                             <th class="text-center">Harga Beli (Rp)</th>
                             <th class="text-center">Harga Jual (Rp)</th>
@@ -21,6 +24,9 @@
                     <tbody>
                         <?php foreach ($produk as $pr) : ?>
                             <tr>
+								<?php if($_SESSION['tipe'] === 'admin'){?>
+									<td><?= $pr['username']; ?></td>
+								<?php }?>
                                 <td class="text-capitalize"><?= $pr['nama_produk']; ?></td>
                                 <td class="text-center"><?= number_format($pr['hrg_beli'], 0, ',', '.') ?></td>
                                 <td class="text-center"><?= number_format($pr['hrg_jual'], 0, ',', '.') ?></td>

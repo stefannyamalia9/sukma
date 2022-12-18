@@ -59,6 +59,9 @@
                 <table class="table table-bordered table-light shadow-sm p-3 mb-5 bg-white rounded" id="tabel-keuangan">
                     <thead>
                         <tr>
+							<?php if($_SESSION['tipe'] === 'admin'){?>
+								<th>User</th>
+							<?php }?>
                             <th scope="col" class="text-center">Nama Produk</th>
                             <th scope="col" width="5%" class="text-center">Unit</th>
                             <th scope="col" width="15%" class="text-center">Total Dana (Rp) </th>
@@ -68,6 +71,9 @@
                     <tbody>
                         <?php foreach ($pembelian as $pb) : ?>
                             <tr>
+								<?php if($_SESSION['tipe'] === 'admin'){?>
+									<td><?= $pb['username']; ?></td>
+								<?php }?>
                                 <td class="text-capitalize"><?= $pb['produk_name']; ?></td>
                                 <td class="text-center"><?= $pb['unit']; ?></td>
                                 <td class="text-center"><?= number_format($pb['total_beli'], 0, ',', '.') ?></td>
